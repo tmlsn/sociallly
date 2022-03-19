@@ -40,6 +40,7 @@ export function Tweet({ id, content, setTweets }) {
             {content.length > 100 ? `${content.substring(0, 100)}...` : content}
           </p>
         )}
+        <textarea />
 
         <div className="tweet__actions">
           <button>Edit</button>
@@ -49,6 +50,10 @@ export function Tweet({ id, content, setTweets }) {
               {showAll ? "Read less" : "Read more"}
             </button>
           )}
+        </div>
+        <div className="tweet__actions">
+          <button>Save</button>
+          <button>Cancel</button>
         </div>
       </div>
     </div>
