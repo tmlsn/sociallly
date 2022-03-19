@@ -5,7 +5,7 @@ import "./Tweet.css";
 // I receuve the id, the content and the setTweets function
 export function Tweet({ id, content, setTweets }) {
   const [showAll, setShowAll] = useState(false);
-  const [edit, setEdit] = useState(true);
+  const [edit, setEdit] = useState(false);
   // handle tweet deletion
   const handleDelete = () => {
     setTweets((previousTweets) => {
@@ -25,8 +25,12 @@ export function Tweet({ id, content, setTweets }) {
   };
 
   const handleEdit = () => {
-    setEdit(true)
-  }
+    setEdit(true);
+  };
+
+  const handleCancel = () => {
+    setEdit(false);
+  };
   return (
     <div className="tweet">
       <img
@@ -50,7 +54,7 @@ export function Tweet({ id, content, setTweets }) {
         {edit ? (
           <div className="tweet__actions">
             <button>Save</button>
-            <button>Cancel</button>
+            <button onClick={handleCancel}>Cancel</button>
           </div>
         ) : (
           <div className="tweet__actions">
