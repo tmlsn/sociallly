@@ -5,7 +5,7 @@ import "./Tweet.css";
 // I receuve the id, the content and the setTweets function
 export function Tweet({ id, content, setTweets }) {
   const [showAll, setShowAll] = useState(false);
-
+  const [edit, setEdit] = useState(true);
   // handle tweet deletion
   const handleDelete = () => {
     setTweets((previousTweets) => {
@@ -33,28 +33,32 @@ export function Tweet({ id, content, setTweets }) {
         alt="avatar_image"
       />
       <div className="tweet__input">
-        {showAll ? (
+        {edit ? (
+          <textarea />
+        ) : showAll ? (
           <p>{content}</p>
         ) : (
           <p>
             {content.length > 100 ? `${content.substring(0, 100)}...` : content}
           </p>
         )}
-        <textarea />
 
-        <div className="tweet__actions">
-          <button>Edit</button>
-          <button onClick={handleDelete}>Delete</button>
-          {content.length > 100 && (
-            <button onClick={handleShowAll}>
-              {showAll ? "Read less" : "Read more"}
-            </button>
-          )}
-        </div>
-        <div className="tweet__actions">
-          <button>Save</button>
-          <button>Cancel</button>
-        </div>
+        {edit ? (
+          <div className="tweet__actions">
+            <button>Save</button>
+            <button>Cancel</button>
+          </div>
+        ) : (
+          <div className="tweet__actions">
+            <button>Edit</button>
+            <button onClick={handleDelete}>Delete</button>
+            {content.length > 100 && (
+              <button onClick={handleShowAll}>
+                {showAll ? "Read less" : "Read more"}
+              </button>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
