@@ -32,6 +32,22 @@ export function Tweet({ id, content, setTweets }) {
   const handleCancel = () => {
     setEdit(false);
   };
+
+  const handleSave = () => {
+    setTweets((previousTweets) => {
+      return previousTweets.map((tweet) => {
+        if (tweet.id === id) {
+          return {
+            id: tweet.id,
+            content: newTweetContent,
+          };
+        } else {
+          return tweet;
+        }
+      });
+    });
+    handleCancel();
+  };
   return (
     <div className="tweet">
       <img
@@ -57,7 +73,7 @@ export function Tweet({ id, content, setTweets }) {
 
         {edit ? (
           <div className="tweet__actions">
-            <button>Save</button>
+            <button onClick={handleSave}>Save</button>
             <button onClick={handleCancel}>Cancel</button>
           </div>
         ) : (
