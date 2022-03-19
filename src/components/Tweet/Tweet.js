@@ -6,6 +6,7 @@ import "./Tweet.css";
 export function Tweet({ id, content, setTweets }) {
   const [showAll, setShowAll] = useState(false);
   const [edit, setEdit] = useState(false);
+  const [newTweetContent, setNewTweetContent] = useState(content);
   // handle tweet deletion
   const handleDelete = () => {
     setTweets((previousTweets) => {
@@ -42,7 +43,10 @@ export function Tweet({ id, content, setTweets }) {
       />
       <div className="tweet__input">
         {edit ? (
-          <textarea />
+          <textarea
+            value={newTweetContent}
+            onChange={(event) => setNewTweetContent(event.target.value)}
+          />
         ) : showAll ? (
           <p>{content}</p>
         ) : (
