@@ -22,4 +22,6 @@
 
 .tweet__input > textarea {
   width: 100%;
+  resize: none;
+  height: 80px;
 }

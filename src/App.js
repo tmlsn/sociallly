@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="container">
       <AddTweet setTweets={setTweets} />
-      <ListOfTweets tweets={tweets} />
+      <ListOfTweets tweets={tweets} setTweets={setTweets} />
     </div>
   );
 }
