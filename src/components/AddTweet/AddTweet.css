@@ -1,0 +1,25 @@
+.tweet {
+  padding: 20px;
+  border: 1px solid gray;
+  display: flex;
+  gap: 15px;
+}
+
+.tweet__input {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.tweet__img {
+  border-radius: 999px;
+}
+
+.tweet__input > button {
+  align-self: flex-end;
+}
+
+.tweet__input > textarea {
+  width: 100%;
+}

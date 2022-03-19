@@ -1,0 +1,5 @@
+.tweet__actions {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 15px;
+}
