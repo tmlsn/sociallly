@@ -23,6 +23,10 @@ export function Tweet({ id, content, setTweets }) {
       return !previousValue;
     });
   };
+
+  const handleEdit = () => {
+    setEdit(true)
+  }
   return (
     <div className="tweet">
       <img
@@ -50,7 +54,7 @@ export function Tweet({ id, content, setTweets }) {
           </div>
         ) : (
           <div className="tweet__actions">
-            <button>Edit</button>
+            <button onClick={handleEdit}>Edit</button>
             <button onClick={handleDelete}>Delete</button>
             {content.length > 100 && (
               <button onClick={handleShowAll}>
