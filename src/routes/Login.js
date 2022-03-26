@@ -7,6 +7,15 @@ export function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // endpoint for logginin
+    const url = `${process.env.REACT_APP_BACKEND_URL}/auth/login`;
+    // data you need to send to login endpoint
+    const data = {
+      email,
+      password,
+    };
+    // axios request, you get back a response containing the token
+    const response = await axios.post(url, data);
   };
 
   return (
