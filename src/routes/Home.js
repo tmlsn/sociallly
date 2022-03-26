@@ -1,3 +1,9 @@
+import { AddTweet } from "../components";
+
 export function Home() {
-  return "home";
+  return (
+    <div className="container">
+      <AddTweet setTweets={() => {}} />
+    </div>
+  );
 }
