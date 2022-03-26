@@ -16,6 +16,11 @@ export function Login() {
     };
     // axios request, you get back a response containing the token
     const response = await axios.post(url, data);
+    // check if the response is OK
+    if (response.status === 200) {
+      // if OK we save the token to local storage
+      localStorage.setItem("token", `Bearer ${response.data}`);
+    }
   };
 
   return (
