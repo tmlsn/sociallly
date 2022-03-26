@@ -27,8 +27,8 @@ export function AddTweet({ setTweets }) {
     // reqest configuration for adding a header with authorization
     const config = {
       headers: {
-        authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiaWF0IjoxNjQ4MjkxOTI5LCJleHAiOjE2NDgzMTM1Mjl9.uB_JNFBzxcFY-iOlH5iIGoacaSQZCHIqXQJXjjCdILk",
+        // read token from local storage and send it with request
+        authorization: localStorage.getItem("token"),
       },
     };
     // make a request with axios
