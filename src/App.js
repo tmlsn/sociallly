@@ -1,15 +1,26 @@
 import "./App.css";
 import { useState } from "react";
-import { Tweet, ListOfTweets, AddTweet } from "./components";
+import { Tweet, ListOfTweets, AddTweet, Profile } from "./components";
 import { tweet_db } from "./db";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 function App() {
   const [tweets, setTweets] = useState(tweet_db);
   return (
-    <div className="container">
+    <Routes>
+    <Route path="/" element={<Navigate to='/home'/>}/>
+    <Route path='/home' element={
+      <div className="container">
       <AddTweet setTweets={setTweets} />
-      <ListOfTweets tweets={tweets} />
+      <ListOfTweets setTweets={setTweets} tweets={tweets} />
     </div>
+    } />
+
+    <Route path="/profile" element={
+      <Profile/>
+    } />
+    
+    </Routes>
   );
 }
 
