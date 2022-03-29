@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { v4 } from "uuid";
+import axios from "axios";
 import Avatar from "../../assets/avatar.jpg";
 import "./AddTweet.css";
 
 export function AddTweet({ setTweets }) {
   const [tweetInput, setTweetInput] = useState("");
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     setTweets((previousTweets) => {
       return [
@@ -17,6 +18,21 @@ export function AddTweet({ setTweets }) {
         },
       ];
     });
+    // data to send in the request body
+    const data = {
+      content: tweetInput,
+    };
+    // url of the endpoint for tweets
+    const url = `${process.env.REACT_APP_BACKEND_URL}/tweets`;
+    // reqest configuration for adding a header with authorization
+    const config = {
+      headers: {
+        // read token from local storage and send it with request
+        authorization: localStorage.getItem("token"),
+      },
+    };
+    // make a request with axios
+    const tweet = await axios.post(url, data, config);
   };
   return (
     <form onSubmit={handleSubmit} className="tweet">

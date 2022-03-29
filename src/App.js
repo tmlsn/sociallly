@@ -12,7 +12,7 @@ function App() {
     <Route path='/home' element={
       <div className="container">
       <AddTweet setTweets={setTweets} />
-      <ListOfTweets setTweets={setTweets} tweets={tweets} />
+      <ListOfTweets tweets={tweets} setTweets={setTweets} />
     </div>
     } />
 
