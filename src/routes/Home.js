@@ -1,11 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { AddTweet, ListOfTweets } from "../components";
+import { AddTweet, ListOfTweets, Navigation } from "../components";
+import { Link } from "react-router-dom";
 
 export function Home() {
   const [tweets, setTweets] = useState([]);
-  // always useEffect when doing an API call
-  useEffect(() => {
+
+  // function to get tweets from the backend, this was moved from inside useEffect
+  const getTweets = async () => {
     // endpoint for getting tweets from the backend
     const url = `${process.env.REACT_APP_BACKEND_URL}/tweets`;
     // request config that is gonna hold the authorization
@@ -15,14 +17,19 @@ export function Home() {
       },
     };
     // make the request
-    axios.get(url, config).then((result) => {
-      setTweets(result.data);
-    });
+    const result = await axios.get(url, config);
+    setTweets(result.data);
+  };
+
+  // always useEffect when doing an API call
+  useEffect(() => {
+    getTweets();
   }, []);
 
   return (
     <div className="container">
-      <AddTweet setTweets={() => {}} />
+      <Navigation />
+      <AddTweet getTweets={getTweets} />
       <ListOfTweets tweets={tweets} />
     </div>
   );

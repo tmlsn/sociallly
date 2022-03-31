@@ -4,20 +4,12 @@ import axios from "axios";
 import Avatar from "../../assets/avatar.jpg";
 import "./AddTweet.css";
 
-export function AddTweet({ setTweets }) {
+// add tweets is for getting new tweets when adding a new one
+export function AddTweet({ getTweets }) {
   const [tweetInput, setTweetInput] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setTweets((previousTweets) => {
-      return [
-        ...previousTweets,
-        {
-          id: v4(),
-          content: tweetInput,
-        },
-      ];
-    });
     // data to send in the request body
     const data = {
       content: tweetInput,
@@ -33,6 +25,8 @@ export function AddTweet({ setTweets }) {
     };
     // make a request with axios
     const tweet = await axios.post(url, data, config);
+    // get tweets from the backend 
+    getTweets();
   };
   return (
     <form onSubmit={handleSubmit} className="tweet">

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Navigation } from "../components";
 
 export function Signup() {
   const navigate = useNavigate();
@@ -37,12 +38,18 @@ export function Signup() {
      */
   };
   return (
-    <form className="loginForm" onSubmit={handleSubmit}>
-      <input value={firstName} onChange={(e) => setFirstName(e.target.value)} />
-      <input value={lastName} onChange={(e) => setLastName(e.target.value)} />
-      <input value={email} onChange={(e) => setEmail(e.target.value)} />
-      <input value={password} onChange={(e) => setPassword(e.target.value)} />
-      <button type="submit">Signup</button>
-    </form>
+    <div className="container">
+      <Navigation />
+      <form className="loginForm" onSubmit={handleSubmit}>
+        <input
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+        />
+        <input value={lastName} onChange={(e) => setLastName(e.target.value)} />
+        <input value={email} onChange={(e) => setEmail(e.target.value)} />
+        <input value={password} onChange={(e) => setPassword(e.target.value)} />
+        <button type="submit">Signup</button>
+      </form>
+    </div>
   );
 }

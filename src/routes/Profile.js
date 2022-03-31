@@ -1,3 +1,9 @@
+import { Navigation } from "../components";
+
 export function Profile() {
-  return "profile";
+  return (
+    <div className="container">
+      <Navigation />
+    </div>
+  );
 }
