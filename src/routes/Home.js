@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { AddTweet, ListOfTweets } from "../components";
+import { AddTweet, ListOfTweets, Navigation } from "../components";
+import { Link } from "react-router-dom";
 
 export function Home() {
   const [tweets, setTweets] = useState([]);
@@ -27,6 +28,7 @@ export function Home() {
 
   return (
     <div className="container">
+      <Navigation />
       <AddTweet getTweets={getTweets} />
       <ListOfTweets tweets={tweets} />
     </div>

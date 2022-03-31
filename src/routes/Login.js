@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { Navigation } from "../components";
 
 export function Login() {
   const [email, setEmail] = useState("");
@@ -24,10 +25,13 @@ export function Login() {
   };
 
   return (
-    <form className="loginForm" onSubmit={handleSubmit}>
-      <input value={email} onChange={(e) => setEmail(e.target.value)} />
-      <input value={password} onChange={(e) => setPassword(e.target.value)} />
-      <button type="submit">Login</button>
-    </form>
+    <div className="container">
+      <Navigation />
+      <form className="loginForm" onSubmit={handleSubmit}>
+        <input value={email} onChange={(e) => setEmail(e.target.value)} />
+        <input value={password} onChange={(e) => setPassword(e.target.value)} />
+        <button type="submit">Login</button>
+      </form>
+    </div>
   );
 }
